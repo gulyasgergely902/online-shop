@@ -51,11 +51,11 @@
 									</div>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link disabled" href="/search">Search</a>
+									<a class="nav-link" href="/search">Search</a>
 								</li>
 							</ul>
 							<ul class="navbar-nav ml-md-auto">
-								<li class="nav-item">
+								<li class="nav-item active">
 									 <a class="nav-link" href="#">Login</a>
 								</li>
 							</ul>
