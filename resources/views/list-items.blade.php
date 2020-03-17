@@ -63,7 +63,12 @@
 					</nav>
 					<div class="jumbotron">
 						<h1>Items</h1>
-						<p>{{ $category }}</p>
+						<p>In: Home > {{ $category_data->name }}</p>
+					</div>
+					<div>
+						@foreach ($items as $item)
+							{{ $item->name }}
+                        @endforeach
 					</div>
 				</div>
 			</div>
