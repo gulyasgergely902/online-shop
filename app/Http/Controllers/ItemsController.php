@@ -8,7 +8,12 @@ class ItemsController extends Controller
 {
     public function show($category){
 
-		$items = \DB::table('items')->/*select('board_id', 'board_name', 'board_password')*/where('category_id', $category)->get();
+    	if($category == "discounted") {
+    		$items = \DB::table('items')->where('sale', 1)->get();
+    	} else {
+    		$items = \DB::table('items')->where('category_id', $category)->get();
+    	}
+
 		$category_data = \DB::table('categories')->where('id', $category)->first();
 
 		#dd($items);
