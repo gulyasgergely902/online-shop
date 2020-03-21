@@ -3,5 +3,50 @@
 	height: 100%;
 	position: fixed;
 	z-index: 999;
-	background:url(imgs/Spinner.gif) no-repeat center center rgba(0, 0, 0, 0.25);
+	background: url(imgs/Spinner.gif) no-repeat center center rgba(0, 0, 0, 0.25);
+}
+
+/* list-items */
+.item-card-wrapper {
+	width: 100%;
+	height: auto;
+}
+
+.item-card {
+	width: 100%;
+	height: 120px;
+	background-color: #ffffff;
+	border-radius: 5px;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+	padding: 16px;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
+.item-image {
+	width: 10%;
+	height: 80px;
+	background-size: contain;
+}
+
+.item-details {
+	width: 70%;
+}
+
+.item-price {
+	width: 20%;
+}
+
+.item-sale-price {
+	color: #00BB00;
+}
+
+.item-old-price {
+	color: #ff5050;
+	text-decoration: line-through;
+}
+
+.item-normal-price {
+	color: #000000;
 }

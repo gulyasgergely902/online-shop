@@ -7,17 +7,15 @@ use Illuminate\Http\Request;
 class ItemsController extends Controller
 {
     public function show($category){
-		$categories = [
-			"discounted" => "All the discounted items here.",
-			"lowest" => "All the all time lowest priced items here"
-		];
 
-		if(! array_key_exists($category, $categories)){
-			abort(404, "Category not exists");
-		}
+		$items = \DB::table('items')->/*select('board_id', 'board_name', 'board_password')*/where('category_id', $category)->get();
+		$category_data = \DB::table('categories')->where('id', $category)->first();
+
+		#dd($items);
 
 		return view('list-items', [
-			'category' => $categories[$category]
+			'category_data' => $category_data,
+			'items' => $items
 		]);
     }
 }
