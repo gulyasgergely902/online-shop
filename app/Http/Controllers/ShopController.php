@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class ShopController extends Controller
 {
     public function showItemsList($category) {
-
     	if($category == "discounted") {
     		$items = \DB::table('items')->where('sale', 1)->get();
     	} else {
@@ -68,11 +67,12 @@ class ShopController extends Controller
 
     public function showCartItems(Request $request){
         if($request->session()->has('cart')) {
-            $cart_items = $request->session()->get('cart');
+            $raw_cart_items = $request->session()->get('cart');
             $database_items = \DB::table('items')->get();
+
             # Build array of items
             $list = array();
-            foreach($cart_items as $cart_item){
+            foreach($raw_cart_items as $cart_item){
                 foreach ($database_items as $database_item) {
                     if($cart_item[0] == $database_item->id){
                         array_push($list, $database_item);
@@ -80,11 +80,25 @@ class ShopController extends Controller
                 }
             }
 
+            $request->session()->put('cart-list', $list);
+
             return view('shopping-cart', [
                 'items' => $list
             ]);
         } else {
             return redirect('/');
         }
+    }
+
+    public function showCheckout(Request $request){
+        $list = $request->session()->get('cart-list');
+        $total = 0;
+        foreach ($list as $item) {
+            $total += $item->price;
+        }
+        return view('checkout', [
+            'items' => $list,
+            'total' => $total
+        ]);
     }
 }

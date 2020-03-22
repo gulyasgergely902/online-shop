@@ -13,3 +13,4 @@ Route::get('/profile', 'UserController@showProfile');
 Route::get('/shopping-cart', 'ShopController@showCartItems');
 Route::get('/add-to-cart/{id}', 'ShopController@addToCart');
 Route::get('/remove-from-cart/{id}', 'ShopController@removeFromCart');
+Route::get('/checkout', 'ShopController@showCheckout');

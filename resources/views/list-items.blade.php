@@ -1,10 +1,12 @@
 @extends ('layout')
 
 @section ('content')
-<div class="jumbotron">
-	<h1>Listing items</h1>
-	<p>In: Home > {{ $category_data->name }}</p>
-</div>
+<nav aria-label="breadcrumb">
+  	<ol class="breadcrumb">
+    	<li class="breadcrumb-item"><a href="/">Home</a></li>
+    	<li class="breadcrumb-item active" aria-current="page">{{ $category_data->name }}</li>
+	</ol>
+</nav>
 <div class="item-card-wrapper">
 	@foreach ($items as $item)
 		<div class="item-card">

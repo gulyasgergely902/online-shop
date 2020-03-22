@@ -27,4 +27,7 @@
 		</div>
 	@endforeach
 </div>
+<div class="jumbotron">
+	<a href="/checkout" class="btn btn-success btn-lg btn-block" role="button">Checkout</a>
+</div>
 @endsection
