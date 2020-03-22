@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ItemsController extends Controller
+class ShopController extends Controller
 {
-    public function show($category){
+    public function showItemsList($category){
 
     	if($category == "discounted") {
     		$items = \DB::table('items')->where('sale', 1)->get();
@@ -15,8 +15,6 @@ class ItemsController extends Controller
     	}
 
 		$category_data = \DB::table('categories')->where('id', $category)->first();
-
-		#dd($items);
 
 		return view('list-items', [
 			'category_data' => $category_data,
