@@ -2,8 +2,7 @@
 
 @section ('content')
 <div class="jumbotron">
-	<h1>Listing items</h1>
-	<p>In: Home > {{ $category_data->name }}</p>
+	<h1>Shopping cart</h1>
 </div>
 <div class="item-card-wrapper">
 	@foreach ($items as $item)
@@ -23,7 +22,7 @@
 				@endif
 			</div>
 			<div class="item-buttons">
-				<a href="/add-to-cart/{{ $item->id }}" class="btn btn-success" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+				<a href="/remove-from-cart/{{ $item->id }}" class="btn btn-danger" role="button"><i class="fas fa-trash-alt"></i>&nbspRemove</a>
 			</div>
 		</div>
 	@endforeach

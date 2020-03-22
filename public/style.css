@@ -22,20 +22,27 @@
 	margin-top: 10px;
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 }
 
 .item-image {
-	width: 10%;
+	width: 20%;
 	height: 80px;
 	background-size: contain;
 }
 
 .item-details {
-	width: 70%;
+	width: 60%;
 }
 
 .item-price {
-	width: 20%;
+	width: 10%;
+	text-align: center;
+}
+
+.item-buttons {
+	width: 10%;
+	text-align: center;
 }
 
 .item-sale-price {
