@@ -10,6 +10,13 @@
 		<li data-slide-to="2" data-target="#carousel-148306">
 		</li>
 	</ol>
+	<div class="jumbotron">
+		@if(Auth::check())
+		<h1>Welcome back, {{Auth::user()->name}}!</h1>
+		@else
+		<h1>Welcome to Online Shop!</h1>
+		@endif
+	</div>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
 			<img class="d-block w-100" alt="Item" src="imgs/we-are-open.png" />
@@ -44,14 +51,14 @@
 				</p>
 			</div>
 		</div>
+		<a class="carousel-control-prev" href="#carousel-148306" data-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carousel-148306" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div> 
-	<a class="carousel-control-prev" href="#carousel-148306" data-slide="prev">
-		<span class="carousel-control-prev-icon"></span>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#carousel-148306" data-slide="next">
-		<span class="carousel-control-next-icon"></span>
-		<span class="sr-only">Next</span>
-	</a>
 </div>
 @endsection
