@@ -106,10 +106,11 @@ class ShopController extends Controller
         ]);
     }
 
-    public function sellItem()
+    public function sellItem(Request $request)
     {
         $category_data = \DB::table('categories')->get();
         return view('sell-item', [
+            'uid' => $request->input('uid'),
             'category_data' => $category_data
         ]);
     }
@@ -120,11 +121,12 @@ class ShopController extends Controller
             'itemDescription' => 'required|max:256',
             'itemPrice' => 'required|integer'
         ]);
-        \DB::table('items')->insert(['name' => $request->itemName, 'description' => $request->itemDescription, 'category_id' => $request->itemCategory, 'price' => $request->itemPrice]);
+        \DB::table('items')->insert(['name' => $request->itemName, 'description' => $request->itemDescription, 'category_id' => $request->itemCategory, 'price' => $request->itemPrice, 'added-by' => $request->uid]);
         return redirect('/profile');
     }
 
-    public function editItem($id) {
+    public function editItem(Request $request) {
+        $id = $request->input('id');
         $category_data = \DB::table('categories')->get();
         $item_data = \DB::table('items')->where('id', $id)->first();
         return view('edit-item', [
@@ -140,6 +142,11 @@ class ShopController extends Controller
             $discounted = 1;
         }
         \DB::table('items')->where('id', $request->input('item-id'))->update(['name' => $request->input('itemName'), 'description' => $request->input('itemDescription'), 'category_id' => $request->input('itemCategory'), 'price' => $request->input('itemPrice'), 'sale' => $discounted, 'sale_price' => $request->input('discountedPrice')]);
+        return redirect('/profile');
+    }
+
+    public function removeListing(Request $request){
+        \DB::table('items')->where('id', $request->input('id'))->delete();
         return redirect('/profile');
     }
 }

@@ -18,10 +18,10 @@
 			</div>
 			<div class="item-price">
 				@if($item->sale == 1)
-				<h5 class="item-old-price">{{ $item->price }}&nbspFt</h5>
-				<h2 class="item-sale-price">{{ $item->sale_price }}&nbspFt</h2>
+					<h5 class="item-old-price">{{ $item->price }}&nbspFt</h5>
+					<h2 class="item-sale-price">{{ $item->sale_price }}&nbspFt</h2>
 				@else
-				<h2 class="item-normal-price">{{ $item->price }}&nbspFt</h2>
+					<h2 class="item-normal-price">{{ $item->price }}&nbspFt</h2>
 				@endif
 			</div>
 			<div class="item-buttons">

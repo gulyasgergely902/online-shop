@@ -18,5 +18,6 @@ Route::get('/change-address', 'UserController@changeAddress');
 Route::get('/become-seller', 'UserController@becomeSeller');
 Route::get('/sell-item', 'ShopController@sellItem');
 Route::get('/create-listing', 'ShopController@createListing');
-Route::get('/edit-item/{id}', 'ShopController@editItem');
+Route::get('/edit-item', 'ShopController@editItem');
 Route::get('/edit-listing', 'ShopController@editListing');
+Route::get('/remove-listing', 'ShopController@removeListing');

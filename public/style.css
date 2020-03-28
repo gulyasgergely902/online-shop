@@ -112,3 +112,7 @@
 	margin: 4px;
 	overflow: auto;
 }
+
+.listing-control-form {
+	display: inline-block;
+}

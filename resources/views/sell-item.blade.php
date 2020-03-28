@@ -11,6 +11,7 @@
     </div>
 @endif
 <form method="GET" action="/create-listing">
+  <input type="hidden" id="uid" name="uid" value="{{ $uid }}">
   <div class="form-group">
     <label for="itemName">Item Name</label>
     <input type="text" class="form-control" id="itemName" name="itemName" aria-describedby="itemName" placeholder="Enter the item's name">
@@ -45,7 +46,6 @@
     <label for="discountedPrice">Discounted Price (Ft)</label>
     <input type="text" class="form-control" id="discountedPrice" name="discountedPrice" aria-describedby="discountedPrice" placeholder="990">
   </div>
-
 
   <button type="submit" class="btn btn-primary">Create listing</button>
 </form>

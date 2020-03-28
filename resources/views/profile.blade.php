@@ -34,6 +34,7 @@
 				<h3>You are a seller!</h3>
 				<p>Being a seller you are able to create and modify your listings and sell your products to our ever growing group of customers!</p>
 				<form method="GET" action="/sell-item">
+					<input type="hidden" name="uid" value="{{ Auth::id() }}">
 					<button class="btn btn-success" role="button">Sell an item</button>
 				</form>
 			@else
@@ -47,22 +48,31 @@
 			@endif
 		@endif
 	</div>
-	<div class="jumbotron">
-		<h2>My listings</h2>
-		<div class="vertical-scrollable-list">
-			@foreach($myListings as $item)
-			    <div class="card">
-			      	<div class="card-body">
-			        	<h5 class="card-title">{{ $item->name }}</h5>
-			        	<p class="card-text">{{ $item->description }}</p>
-			        	<form method="GET" action="/edit-item/{{ $item->id }}">
-			        		<button class="btn btn-success" role="button">Edit</button>
-			        	</form>
-			    	</div>
+	@if($details != NULL)
+		@if($details->isSeller != NULL || $details->isSeller == 1)
+			<div class="jumbotron">
+				<h2>My listings</h2>
+				<div class="vertical-scrollable-list">
+					@foreach($myListings as $item)
+					    <div class="card">
+					      	<div class="card-body">
+					        	<h5 class="card-title">{{ $item->name }}</h5>
+					        	<p class="card-text">{{ $item->description }}</p>
+					        	<form method="GET" class="listing-control-form" action="/edit-item">
+					        		<input type="hidden" name="id" value="{{ $item->id }}">
+					        		<button class="btn btn-success" role="button">Edit</button>
+					        	</form>
+					        	<form method="GET" class="listing-control-form" action="/remove-listing">
+					        		<input type="hidden" name="id" value="{{ $item->id }}">
+					        		<button class="btn btn-danger" role="button">Delete</button>
+					        	</form>
+					    	</div>
+						</div>
+					@endforeach
 				</div>
-			@endforeach
-		</div>
-	</div>
+			</div>
+		@endif
+	@endif
 	<div class="jumbotron">
 		<h2>Last purchases</h2>
 	</div>
