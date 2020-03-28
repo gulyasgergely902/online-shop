@@ -92,3 +92,23 @@
 	width: 100%;
 	text-align: right;
 }
+
+/* Profile page */
+.vertical-scrollable-list{
+	overflow-y: scroll;
+	width: 100%;
+	height: 350px;
+}
+
+.list-item{
+	float:left;
+	padding: 16px;
+	background-color: #ffffff;
+	width: 200px;
+	height: 200px;
+	word-wrap: break-word;
+	border: 1px #DDDDDD solid;
+	border-radius: 5px;
+	margin: 4px;
+	overflow: auto;
+}
