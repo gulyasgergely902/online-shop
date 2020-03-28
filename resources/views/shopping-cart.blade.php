@@ -1,12 +1,9 @@
 @extends ('layout')
 
 @section ('content')
-<nav aria-label="breadcrumb">
-  	<ol class="breadcrumb">
-    	<li class="breadcrumb-item"><a href="/">Home</a></li>
-    	<li class="breadcrumb-item active" aria-current="page">{{ $category_data->name }}</li>
-	</ol>
-</nav>
+<div class="jumbotron">
+	<h1>Shopping cart</h1>
+</div>
 <div class="item-card-wrapper">
 	@foreach ($items as $item)
 		<div class="item-card">
@@ -25,9 +22,12 @@
 				@endif
 			</div>
 			<div class="item-buttons">
-				<a href="/add-to-cart/{{ $item->id }}" class="btn btn-success" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+				<a href="/remove-from-cart/{{ $item->id }}" class="btn btn-danger" role="button"><i class="fas fa-trash-alt"></i>&nbspRemove</a>
 			</div>
 		</div>
 	@endforeach
+</div>
+<div class="jumbotron">
+	<a href="/checkout" class="btn btn-success btn-lg btn-block" role="button">Checkout</a>
 </div>
 @endsection

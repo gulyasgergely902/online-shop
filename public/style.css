@@ -1,3 +1,8 @@
+/* global */
+.jumbotron {
+	margin-top: 16px;
+}
+
 .spinner{
 	width: 100%;
 	height: 100%;
@@ -7,6 +12,9 @@
 }
 
 /* list-items */
+.breadcrumb {
+	margin-top: 16px;
+}
 .item-card-wrapper {
 	width: 100%;
 	height: auto;
@@ -22,20 +30,27 @@
 	margin-top: 10px;
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 }
 
 .item-image {
-	width: 10%;
+	width: 20%;
 	height: 80px;
 	background-size: contain;
 }
 
 .item-details {
-	width: 70%;
+	width: 60%;
 }
 
 .item-price {
-	width: 20%;
+	width: 10%;
+	text-align: center;
+}
+
+.item-buttons {
+	width: 10%;
+	text-align: center;
 }
 
 .item-sale-price {
@@ -54,4 +69,26 @@
 /* Signup / Signin page */
 .signup{
 	margin-top: 16px;
+}
+
+/* Checkout page */
+.checkout-wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+.order-summary {
+	width: 50%;
+}
+
+.separator {
+	background-color: #EEEEEE;
+	width: 1px;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.order-total {
+	width: 100%;
+	text-align: right;
 }

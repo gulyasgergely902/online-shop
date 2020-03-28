@@ -17,6 +17,9 @@
 
         <!-- custom script -->
     	<script src="../script.js"></script>
+
+    	<!-- FontAwesome -->
+    	<script src="https://kit.fontawesome.com/1eaaf45e00.js" crossorigin="anonymous"></script>
     </head>
     <body>
     	<div class="spinner" id="spinner"></div>
@@ -51,22 +54,33 @@
 								</li>
 							</ul>
 							<ul class="navbar-nav ml-md-auto">
+								@if(session()->has('cart'))
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle {{ Request::path() == 'shopping-cart' ? 'active' : ''}}" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i>&nbspShopping Cart</a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+										@foreach(Session::get('cart') as $cartItem)
+											<a class="dropdown-item" href="#">{{ $cartItem[1]->name }}</a>
+										@endforeach
+										<a class="dropdown-item" href="/shopping-cart">Show items</a>
+									</div>
+								</li>
+								@endif
 								@if(Auth::check())
 									<li class="nav-item">
-										<a class="nav-link" href="/profile">Profile</a>
+										<a class="nav-link {{ Request::path() == 'profile' ? 'active' : ''}}" href="/profile"><i class="fas fa-user"></i>&nbspProfile</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Logout</a>
+										<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i>&nbspLogout</a>
 									</li>
 									<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
 									   {{ csrf_field() }}
 									</form>
 									@else
 									<li class="nav-item">
-										<a class="nav-link" href="/login">Login</a>
+										<a class="nav-link {{ Request::path() == 'login' ? 'active' : ''}}" href="/login"><i class="fas fa-sign-in-alt"></i>&nbspLogin</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/register">Register</a>
+										<a class="nav-link {{ Request::path() == 'register' ? 'active' : ''}}" href="/register"><i class="fas fa-user-plus"></i>&nbspRegister</a>
 									</li>	
 									@endif
 								</li>
