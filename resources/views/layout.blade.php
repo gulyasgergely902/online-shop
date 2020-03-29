@@ -22,7 +22,7 @@
     	<script src="https://kit.fontawesome.com/1eaaf45e00.js" crossorigin="anonymous"></script>
     </head>
     <body>
-    	<div class="spinner" id="spinner"></div>
+    	<div class="spinner-border" role="status" id="spinner-border"></div>
 		<!-- Bootstrap Grid -->
 		<div class="container-fluid" id="container-fluid">
 			<div class="row">
@@ -51,6 +51,9 @@
 										<a class="dropdown-item" href="/list-items/car-accessories">Car accessories</a>
 										<a class="dropdown-item" href="/list-items/tools">Tools</a>
 									</div>
+								</li>
+								<li class="nav-item">
+									 <a class="nav-link {{ Request::path() == '/search' ? 'active' : ''}}" href="/search">Search</a>
 								</li>
 							</ul>
 							<ul class="navbar-nav ml-md-auto">

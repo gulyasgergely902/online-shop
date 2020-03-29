@@ -21,3 +21,6 @@ Route::get('/create-listing', 'ShopController@createListing');
 Route::get('/edit-item', 'ShopController@editItem');
 Route::get('/edit-listing', 'ShopController@editListing');
 Route::get('/remove-listing', 'ShopController@removeListing');
+Route::get('/item-details/{id}', 'ShopController@showItemDetails');
+Route::get('/search', 'ShopController@showSearchPage');
+Route::get('/searchItem', 'ShopController@searchItem');

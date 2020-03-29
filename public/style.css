@@ -3,18 +3,28 @@
 	margin-top: 16px;
 }
 
-.spinner{
+/*.spinner{
 	width: 100%;
 	height: 100%;
 	position: fixed;
 	z-index: 999;
 	background: url(imgs/Spinner.gif) no-repeat center center rgba(0, 0, 0, 0.25);
+}*/
+
+.spinner-border{
+	width: 100px;
+	height: 100px;
+	z-index: 999;
+	position: absolute;
+	top: 48%;
+	left: 48%;
 }
 
 /* list-items */
 .breadcrumb {
 	margin-top: 16px;
 }
+
 .item-card-wrapper {
 	width: 100%;
 	height: auto;
@@ -64,6 +74,10 @@
 
 .item-normal-price {
 	color: #000000;
+}
+
+.sale-effect {
+	background: url(imgs/sale-bg-side.png) no-repeat;
 }
 
 /* Signup / Signin page */
