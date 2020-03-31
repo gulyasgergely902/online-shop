@@ -22,11 +22,21 @@ class UserController extends Controller
 
     public function changeAddress(Request $request){
     	\DB::table('user-details')->where('id', Auth::id())->update(['address' => $request->input('new-address')]);
-    	return redirect('/profile');
+    	return redirect('/profile')->with(['message' => 'You changed your address successfully!', 'alert' => 'alert-success']);
     }
 
     public function becomeSeller(Request $request){
     	\DB::table('user-details')->where('id', Auth::id())->update(['isSeller' => 1]);
-    	return redirect('/profile');
+    	return redirect('/profile')->with(['message' => 'You became a seller!', 'alert' => 'alert-success']);
+    }
+
+    public function saveSettings(Request $request){
+        if($request->input("darkModeCheck") == "on"){
+            $request->session()->put('darkMode', 'on');
+        } else {
+            $request->session()->put('darkMode', 'off');
+        }
+
+        return redirect('/profile')->with(['message' => 'Settings saved!', 'alert' => 'alert-success']);
     }
 }

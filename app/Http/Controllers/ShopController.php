@@ -155,22 +155,22 @@ class ShopController extends Controller
 
         $relevant = \DB::table('items')->where('category_id', $item->category_id)->inRandomOrder()->take(3)->get();
 
+        $category_data = \DB::table('categories')->where('id', $item->category_id)->first();
+
         return view('item-details', [
             'item' => $item,
-            'relevant' => $relevant
+            'relevant' => $relevant,
+            'category_data' => $category_data
         ]);
     }
 
-    public function showSearchPage() {
-        return view('search-item', [
-            'found-items' => null
-        ]);
-    }
-
-    public function searchItem(Request $request) {
+    public function showSearchPage(Request $request) {
         $items = \DB::table('items')->where('name', 'like', '%' . $request->input('item-name') . '%')->get();
-        return view('search-item', [
-            'found-items' => $items
-        ]);
+        if(count($items) > 0){
+            return view('search-item', [
+            'items' => $items
+            ]);
+        }
+        return redirect()->back()->with(['message' => 'Cannot find what you searching for. Try refine your query or try again later', 'alert' => 'alert-warning']);
     }
 }

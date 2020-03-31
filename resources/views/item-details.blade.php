@@ -1,6 +1,13 @@
 @extends ('layout')
 
 @section ('content')
+<nav aria-label="breadcrumb">
+  	<ol class="breadcrumb mt-3">
+    	<li class="breadcrumb-item"><a href="/">Home</a></li>
+    	<li class="breadcrumb-item active" aria-current="page">{{ $category_data->name }}</li>
+    	<li class="breadcrumb-item" aria-current="page">{{ $item->name }}</li>
+	</ol>
+</nav>
 <div class="card mb-3 mt-3">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -16,7 +23,7 @@
 		@else
 			<h2 class="item-normal-price">{{ $item->price }}&nbspFt</h2>
 		@endif
-		<a href="/add-to-cart/{{ $item->id }}" class="btn btn-success" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+		<a href="/add-to-cart/{{ $item->id }}" class="btn btn-primary" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
       </div>
     </div>
   </div>
@@ -35,7 +42,7 @@
 				@endif
 			</div>
 			<div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
+				
 			</div>
 		</div>
 	@endforeach

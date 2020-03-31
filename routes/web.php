@@ -23,4 +23,4 @@ Route::get('/edit-listing', 'ShopController@editListing');
 Route::get('/remove-listing', 'ShopController@removeListing');
 Route::get('/item-details/{id}', 'ShopController@showItemDetails');
 Route::get('/search', 'ShopController@showSearchPage');
-Route::get('/searchItem', 'ShopController@searchItem');
+Route::get('/save-settings', 'UserController@saveSettings');

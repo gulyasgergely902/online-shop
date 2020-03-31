@@ -10,7 +10,7 @@
 		<li data-slide-to="2" data-target="#carousel-148306">
 		</li>
 	</ol>
-	<div class="jumbotron">
+	<div class="jumbotron mt-3">
 		@if(Auth::check())
 		<h1>Welcome back, {{Auth::user()->name}}!</h1>
 		@else

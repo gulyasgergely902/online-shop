@@ -1,16 +1,9 @@
 @extends ('layout')
 
 @section ('content')
-<form method="GET" action="/searchItem" class="mt-3">
-	<div class="form-group">
-		<label for="item-search-box">Search for an item...</label>
-		<input type="text" class="form-control" id="item-search-box" aria-describedby="item-search-box-help" placeholder="Search for an item here (e.g. Motul)" name="item-name">
-	</div>
-	<button class="btn btn-primary" role="button"><i class="fas fa-search"></i>&nbspSearch item</button>
-</form>
-@if(null !== $found-items)
-	<div class="item-card-wrapper">
-		@foreach ($found-items as $item)
+<div class="item-card-wrapper">
+	@if(count($items) > 0)
+		@foreach ($items as $item)
 			@if($item->sale == 1)
 				<div class="item-card sale-effect">
 			@else
@@ -35,7 +28,12 @@
 					</div>
 				</div>
 		@endforeach
-	</div>
-@endif
+	@else
+		<div class="jumbotron">
+			<h1>Can't find that one :(</h1>
+			<h3>Come back later, we might get that for you!</h3>
+		</div>
+	@endif
+</div>
 
 @endsection
