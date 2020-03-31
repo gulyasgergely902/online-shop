@@ -44,10 +44,10 @@ class ShopController extends Controller
             $request->session()->put('cart', $cart);
         }
 
-        return redirect('/');
+        return redirect('/shopping-cart');
     }
 
-    public function removeFromCart(Request $request, $id){
+    public function removeFromCart(Request $request, $id) {
         $cart = $request->session()->get('cart');
         $i = 0;
         foreach ($cart as $item) {
@@ -65,7 +65,7 @@ class ShopController extends Controller
         return redirect('/shopping-cart');
     }
 
-    public function showCartItems(Request $request){
+    public function showCartItems(Request $request) {
         if($request->session()->has('cart')) {
             $raw_cart_items = $request->session()->get('cart');
             $database_items = \DB::table('items')->get();
@@ -90,15 +90,87 @@ class ShopController extends Controller
         }
     }
 
-    public function showCheckout(Request $request){
+    public function showCheckout(Request $request) {
         $list = $request->session()->get('cart-list');
         $total = 0;
         foreach ($list as $item) {
-            $total += $item->price;
+            if($item->sale == 1)
+                $total += $item->sale_price;
+            else {
+                $total += $item->price;
+            }
         }
         return view('checkout', [
             'items' => $list,
             'total' => $total
+        ]);
+    }
+
+    public function sellItem(Request $request)
+    {
+        $category_data = \DB::table('categories')->get();
+        return view('sell-item', [
+            'uid' => $request->input('uid'),
+            'category_data' => $category_data
+        ]);
+    }
+
+    public function createListing(Request $request) {
+        $validatedData = $request->validate([
+            'itemName' => 'required|max:64',
+            'itemDescription' => 'required|max:256',
+            'itemPrice' => 'required|integer'
+        ]);
+        \DB::table('items')->insert(['name' => $request->itemName, 'description' => $request->itemDescription, 'category_id' => $request->itemCategory, 'price' => $request->itemPrice, 'added-by' => $request->uid]);
+        return redirect('/profile');
+    }
+
+    public function editItem(Request $request) {
+        $id = $request->input('id');
+        $category_data = \DB::table('categories')->get();
+        $item_data = \DB::table('items')->where('id', $id)->first();
+        return view('edit-item', [
+            'id' => $id,
+            'item_data' => $item_data,
+            'category_data' => $category_data
+        ]);
+    }
+
+    public function editListing(Request $request) {
+        $discounted = 0;
+        if($request->input('isDiscounted') == 'on'){
+            $discounted = 1;
+        }
+        \DB::table('items')->where('id', $request->input('item-id'))->update(['name' => $request->input('itemName'), 'description' => $request->input('itemDescription'), 'category_id' => $request->input('itemCategory'), 'price' => $request->input('itemPrice'), 'sale' => $discounted, 'sale_price' => $request->input('discountedPrice')]);
+        return redirect('/profile');
+    }
+
+    public function removeListing(Request $request) {
+        \DB::table('items')->where('id', $request->input('id'))->delete();
+        return redirect('/profile');
+    }
+
+    public function showItemDetails($id) {
+        $item = \DB::table('items')->where('id', $id)->first();
+
+        $relevant = \DB::table('items')->where('category_id', $item->category_id)->inRandomOrder()->take(3)->get();
+
+        return view('item-details', [
+            'item' => $item,
+            'relevant' => $relevant
+        ]);
+    }
+
+    public function showSearchPage() {
+        return view('search-item', [
+            'found-items' => null
+        ]);
+    }
+
+    public function searchItem(Request $request) {
+        $items = \DB::table('items')->where('name', 'like', '%' . $request->input('item-name') . '%')->get();
+        return view('search-item', [
+            'found-items' => $items
         ]);
     }
 }

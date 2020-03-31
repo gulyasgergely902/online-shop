@@ -1,6 +1,6 @@
 $( document ).on('readystatechange', function(){
 	if(document.readyState == "loading" || document.readyState == "interactive"){
-		$('.spinner').show(0);
+		$('.spinner-border').show(0);
 		$('.container-fluid').hide(0);
 	}
 });
@@ -8,6 +8,6 @@ $( document ).on('readystatechange', function(){
 $( document ).ready(function(){
 	$('.container-fluid').fadeIn(500);
 	setTimeout(function(){
-		$('.spinner').fadeOut(500);
+		$('.spinner-border').fadeOut(500);
 	}, 500);
 });
