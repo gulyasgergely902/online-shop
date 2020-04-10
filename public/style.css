@@ -1,15 +1,8 @@
-/* global */
-.jumbotron {
-	margin-top: 16px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,700;0,900;1,200&display=swap');
 
-/*.spinner{
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	z-index: 999;
-	background: url(imgs/Spinner.gif) no-repeat center center rgba(0, 0, 0, 0.25);
-}*/
+body{
+	font-family: 'Nunito', sans-serif;
+}
 
 .spinner-border{
 	width: 100px;
@@ -21,30 +14,19 @@
 }
 
 /* list-items */
-.breadcrumb {
-	margin-top: 16px;
-}
-
 .item-card-wrapper {
 	width: 100%;
 	height: auto;
 }
 
-.item-card {
-	width: 100%;
-	height: 120px;
-	background-color: #ffffff;
-	border-radius: 5px;
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
-	padding: 16px;
-	margin-top: 10px;
+.list-items-card{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
 
 .item-image {
-	width: 20%;
+	width: 10%;
 	height: 80px;
 	background-size: contain;
 }
@@ -54,26 +36,13 @@
 }
 
 .item-price {
-	width: 10%;
+	width: 20%;
 	text-align: center;
 }
 
 .item-buttons {
 	width: 10%;
 	text-align: center;
-}
-
-.item-sale-price {
-	color: #00BB00;
-}
-
-.item-old-price {
-	color: #ff5050;
-	text-decoration: line-through;
-}
-
-.item-normal-price {
-	color: #000000;
 }
 
 .sale-effect {

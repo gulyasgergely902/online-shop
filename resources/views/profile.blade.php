@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	<div class="jumbotron">
+	<div class="jumbotron mt-3">
 		<h1>Hi, {{Auth::user()->name}}!</h1>
 	</div>
 	<div class="card mb-3">
@@ -27,7 +27,7 @@
 			</ul>
 			<form method="GET" action="/change-address">
 				<input type="text" name="new-address">
-				<button class="btn btn-success" role="button"><i class="fas fa-edit"></i>&nbspChange Address</button>
+				<button class="btn btn-primary" role="button"><i class="fas fa-edit"></i>&nbspChange Address</button>
 			</form>
 			<hr>
 			@if($details != NULL)
@@ -36,7 +36,7 @@
 					<p>Being a seller you are able to create and modify your listings and sell your products to our ever growing group of customers!</p>
 					<form method="GET" action="/sell-item">
 						<input type="hidden" name="uid" value="{{ Auth::id() }}">
-						<button class="btn btn-success" role="button"><i class="fas fa-money-bill-alt"></i>&nbspSell an item</button>
+						<button class="btn btn-primary" role="button"><i class="far fa-money-bill-alt"></i>&nbspSell an item</button>
 					</form>
 				@else
 					<h3>Become a seller!</h3>
@@ -44,10 +44,23 @@
 					By becoming a seller you will be able to create and modify your listings and sell your products to our ever growing group of customers!</p>
 					<p class="text-danger">Be careful! You cannot revert your status to customer! The only way to achieve that is by sending an email to us!</p>
 					<form method="GET" action="/become-seller">
-						<button class="btn btn-success" role="button">Become a seller!</button>
+						<button class="btn btn-primary" role="button">Become a seller!</button>
 					</form>
 				@endif
 			@endif
+		</div>
+	</div>
+	<div class="card mb-3">
+		<div class="card-header">Settings</div>
+		<div class="card-body">
+			<form method="GET" action="/save-settings">
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="darkModeCheck" name="darkModeCheck" {{ Session::get('darkMode') == 'on' ? 'checked' : ''}}>
+					<label class="form-check-label" for="darkModeCheck">Enable dark mode</label>
+					<small id="darkModeHelp" class="form-text text-muted">Switch to darker colors for easier reading in dark conditions</small>
+				</div>
+				<button class="btn btn-primary" role="button"><i class="far fa-save"></i>&nbspSave</button>
+			</form>
 		</div>
 	</div>
 	@if($details != NULL)
@@ -63,7 +76,7 @@
 						        	<p class="card-text">{{ $item->description }}</p>
 						        	<form method="GET" class="listing-control-form" action="/edit-item">
 						        		<input type="hidden" name="id" value="{{ $item->id }}">
-						        		<button class="btn btn-success" role="button"><i class="fas fa-edit"></i>&nbspEdit</button>
+						        		<button class="btn btn-primary" role="button"><i class="fas fa-edit"></i>&nbspEdit</button>
 						        	</form>
 						        	<form method="GET" class="listing-control-form" action="/remove-listing">
 						        		<input type="hidden" name="id" value="{{ $item->id }}">

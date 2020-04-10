@@ -1,25 +1,19 @@
 @extends ('layout')
 
 @section ('content')
-<form method="GET" action="/searchItem" class="mt-3">
-	<div class="form-group">
-		<label for="item-search-box">Search for an item...</label>
-		<input type="text" class="form-control" id="item-search-box" aria-describedby="item-search-box-help" placeholder="Search for an item here (e.g. Motul)" name="item-name">
-	</div>
-	<button class="btn btn-primary" role="button"><i class="fas fa-search"></i>&nbspSearch item</button>
-</form>
-@if(null !== $found-items)
-	<div class="item-card-wrapper">
-		@foreach ($found-items as $item)
+<div class="item-card-wrapper">
+	@if(count($items) > 0)
+		@foreach ($items as $item)
+			<div class="card mb-3">
+			<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }}</div></a>
 			@if($item->sale == 1)
-				<div class="item-card sale-effect">
-			@else
-				<div class="item-card">
-			@endif
+					<div class="card-body list-items-card sale-effect">
+				@else
+					<div class="card-body list-items-card">
+				@endif
 					<div class="item-image" style="background: url(../{{ $item->image_link }}) no-repeat center center !important;">
 					</div>
 					<div class="item-details">
-						<h2><a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}">{{ $item->name }}</a></h2>
 						<p class="text-muted">{{ $item->description }}</p>
 					</div>
 					<div class="item-price">
@@ -34,8 +28,14 @@
 						<a href="/add-to-cart/{{ $item->id }}" class="btn btn-success" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
 					</div>
 				</div>
+			</div>
 		@endforeach
-	</div>
-@endif
-
+	@else
+		<div class="jumbotron">
+			<h1>Can't find that one :(</h1>
+			<h3>Come back later, we might get that for you!</h3>
+		</div>
+	@endif
+</div>
+ 
 @endsection
