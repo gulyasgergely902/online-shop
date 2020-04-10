@@ -51,6 +51,23 @@
 		</div>
 	</div>
 	<div class="card mb-3">
+		<div class="card-header">Messages</div>
+		<div class="card-body">
+			@foreach($messages as $message)
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Message about item {{ $message->item_id }}</h5>
+						<p class="card-text">{{ $message->message }}</p>
+						<form method="GET" class="listing-control-form" action="/delete-message">
+							<input type="hidden" name="id" value="{{ $message->id }}">
+							<button class="btn btn-danger" role="button"><i class="fas fa-trash-alt"></i>&nbspDelete</button>
+						</form>
+					</div>
+				</div>
+			@endforeach
+		</div>
+	</div>
+	<div class="card mb-3">
 		<div class="card-header">Settings</div>
 		<div class="card-body">
 			<form method="GET" action="/save-settings">

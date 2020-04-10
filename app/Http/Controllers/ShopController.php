@@ -173,4 +173,8 @@ class ShopController extends Controller
         }
         return redirect()->back()->with(['message' => 'Cannot find what you searching for. Try refine your query or try again later', 'alert' => 'alert-warning']);
     }
+
+    public function showPaymentPage(){
+        return view('pay');
+    }
 }
