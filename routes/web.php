@@ -24,3 +24,6 @@ Route::get('/remove-listing', 'ShopController@removeListing');
 Route::get('/item-details/{id}', 'ShopController@showItemDetails');
 Route::get('/search', 'ShopController@showSearchPage');
 Route::get('/save-settings', 'UserController@saveSettings');
+Route::get('/message/{id}', 'UserController@sendMessage');
+Route::get('/delete-message', 'UserController@removeMessage');
+Route::get('/pay', 'ShopController@showPaymentPage');

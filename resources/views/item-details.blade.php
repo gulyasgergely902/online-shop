@@ -24,6 +24,37 @@
 			<h2 class="item-normal-price">{{ $item->price }}&nbspFt</h2>
 		@endif
 		<a href="/add-to-cart/{{ $item->id }}" class="btn btn-primary" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+
+		<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#messageModal"><i class="fas fa-comment"></i>&nbspMessage to seller</button>
+
+		<!-- Message to seller modal -->
+		<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="messageModalLabel">New message</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form action="/message/{{ $item->id }}" action="get">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Message:</label>
+								<textarea class="form-control" id="message-text" name="message-text"></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary" role="button"><i class="fas fa-paper-plane"></i>&nbspSend message</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Message to seller modal end -->
+
+
+		
       </div>
     </div>
   </div>
