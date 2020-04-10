@@ -15,6 +15,8 @@ class ShopController extends Controller
 
 		$category_data = \DB::table('categories')->where('id', $category)->first();
 
+        //dd($items);
+
 		return view('list-items', [
 			'category_data' => $category_data,
 			'items' => $items
@@ -121,7 +123,12 @@ class ShopController extends Controller
             'itemDescription' => 'required|max:256',
             'itemPrice' => 'required|integer'
         ]);
-        \DB::table('items')->insert(['name' => $request->itemName, 'description' => $request->itemDescription, 'category_id' => $request->itemCategory, 'price' => $request->itemPrice, 'added-by' => $request->uid]);
+        $discounted = 0;
+        if($request->input('isDiscounted') == 'on'){
+            $discounted = 1;
+        }
+        $isAuction = ($request->input('isAuction') == NULL) ? 0 : 1;
+        \DB::table('items')->insert(['name' => $request->itemName, 'description' => $request->itemDescription, 'category_id' => $request->itemCategory, 'price' => $request->itemPrice, 'added-by' => $request->uid, 'sale' => $discounted, 'sale_price' => $request->input('discountedPrice'), 'type' => $isAuction, 'endtime' => $request->input('auctionDate')]);
         return redirect('/profile');
     }
 
@@ -141,7 +148,8 @@ class ShopController extends Controller
         if($request->input('isDiscounted') == 'on'){
             $discounted = 1;
         }
-        \DB::table('items')->where('id', $request->input('item-id'))->update(['name' => $request->input('itemName'), 'description' => $request->input('itemDescription'), 'category_id' => $request->input('itemCategory'), 'price' => $request->input('itemPrice'), 'sale' => $discounted, 'sale_price' => $request->input('discountedPrice')]);
+        $isAuction = ($request->input('isAuction') == NULL) ? 0 : 1;
+        \DB::table('items')->where('id', $request->input('item-id'))->update(['name' => $request->input('itemName'), 'description' => $request->input('itemDescription'), 'category_id' => $request->input('itemCategory'), 'price' => $request->input('itemPrice'), 'sale' => $discounted, 'sale_price' => $request->input('discountedPrice'), 'type' => $isAuction, 'endtime' => $request->input('auctionDate')]);
         return redirect('/profile');
     }
 

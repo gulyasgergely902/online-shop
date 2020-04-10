@@ -49,6 +49,14 @@ body{
 	background: url(imgs/sale-bg-side.png) no-repeat;
 }
 
+.auction-effect {
+	background: url(imgs/auction-bg-side.png) no-repeat;
+}
+
+.auction-sale-effect {
+	background: url(imgs/auction-sale-bg-side.png) no-repeat;
+}
+
 /* Signup / Signin page */
 .signup{
 	margin-top: 16px;
