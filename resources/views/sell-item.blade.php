@@ -47,6 +47,16 @@
     <input type="text" class="form-control" id="discountedPrice" name="discountedPrice" aria-describedby="discountedPrice" placeholder="990">
   </div>
 
+  <div class="form-group">
+    <input type="checkbox" id="isAuction" name="isAuction" aria-describedby="isAuction">
+    <label for="isAuction">Aution item</label>
+  </div>
+
+  <div class="form-group">
+    <label for="auctionDate">Auction date</label>
+    <input type="date" class="form-control" id="auctionDate" name="auctionDate" aria-describedby="auctionDate">
+  </div>
+
   <button type="submit" class="btn btn-primary">Create listing</button>
 </form>
 @endsection

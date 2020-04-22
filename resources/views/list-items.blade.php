@@ -10,9 +10,24 @@
 <div class="item-card-wrapper">
 	@foreach ($items as $item)
 		<div class="card mb-3">
-			<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }}</div></a>
-				@if($item->sale == 1)
+			@if($item->type == 1)
+				@php($date = \Carbon\Carbon::parse($item->endtime))
+				@if($date->isPast())
+					<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }} | <b class="text-danger">Auction ended: {{ $item->endtime }}</b></div></a>
+				@elseif($date->isNextWeek())
+					<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }} | <b class="text-warning">Auction will end: {{ $item->endtime }}</b></div></a>
+				@else
+					<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }} | <b class="text-primary">Auction will end: {{ $item->endtime }}</b></div></a>
+				@endif
+			@else
+				<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }}</div></a>
+			@endif
+				@if($item->sale == 1 && $item->type == 1)
+					<div class="card-body list-items-card auction-sale-effect">
+				@elseif($item->sale == 1)
 					<div class="card-body list-items-card sale-effect">
+				@elseif($item->type == 1)
+					<div class="card-body list-items-card auction-effect">
 				@else
 					<div class="card-body list-items-card">
 				@endif
@@ -29,7 +44,12 @@
 						@endif
 					</div>
 					<div class="item-buttons">
-						<a href="/add-to-cart/{{ $item->id }}" class="btn btn-success" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+						@php($date = \Carbon\Carbon::parse($item->endtime))
+						@if($date->isPast())
+							<a class="btn btn-light" role="button"><i class="fas fa-cart-plus"></i>&nbspAuction over</a>
+						@else
+							<a href="/add-to-cart/{{ $item->id }}" class="btn btn-success" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+						@endif
 					</div>
 				</div>
 		</div>

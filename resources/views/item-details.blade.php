@@ -17,13 +17,28 @@
       <div class="card-body">
         <h5 class="card-title">{{ $item->name }}</h5>
         <p class="card-text">{{ $item->description }}</p>
+        @if($item->type == 1)
+        	@php($date = \Carbon\Carbon::parse($item->endtime))
+			@if($date->isPast())
+				<p class="card-text"><b class="text-danger">Auction ended: {{ $item->endtime }}</b></p>
+			@elseif($date->isNextWeek())
+				<p class="card-text"><b class="text-warning">Auction will end: {{ $item->endtime }}</b></p>
+			@else
+				<p class="card-text"><b class="text-primary">Auction will end: {{ $item->endtime }}</b></p>
+			@endif
+        @endif
         @if($item->sale == 1)
 			<h5 class="item-old-price">{{ $item->price }}&nbspFt</h5>
 			<h2 class="item-sale-price">{{ $item->sale_price }}&nbspFt</h2>
 		@else
 			<h2 class="item-normal-price">{{ $item->price }}&nbspFt</h2>
 		@endif
-		<a href="/add-to-cart/{{ $item->id }}" class="btn btn-primary" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+		@php($date = \Carbon\Carbon::parse($item->endtime))
+		@if($date->isPast())
+			<a class="btn btn-light" role="button"><i class="fas fa-cart-plus"></i>&nbspAuction over</a>
+		@else
+			<a href="/add-to-cart/{{ $item->id }}" class="btn btn-primary" role="button"><i class="fas fa-cart-plus"></i>&nbspAdd to cart</a>
+		@endif
 
 		<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#messageModal"><i class="fas fa-comment"></i>&nbspMessage to seller</button>
 
