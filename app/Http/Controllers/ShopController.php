@@ -9,6 +9,8 @@ class ShopController extends Controller
     public function showItemsList($category) {
     	if($category == "discounted") {
     		$items = \DB::table('items')->where('sale', 1)->get();
+        } elseif ($category == "auction") {
+            $items = \DB::table('items')->where('type', 1)->get();
     	} else {
     		$items = \DB::table('items')->where('category_id', $category)->get();
     	}

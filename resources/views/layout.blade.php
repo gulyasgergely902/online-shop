@@ -49,6 +49,7 @@
 									<a class="nav-link dropdown-toggle {{ Request::is('list-items/*') ? 'active text-primary' : ''}}" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown">Categories</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 										<a class="dropdown-item" href="/list-items/discounted">Discounted</a>
+										<a class="dropdown-item" href="/list-items/auction">Auction</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="/list-items/clothing">Clothing</a>
 										<a class="dropdown-item" href="/list-items/electronics">Electronics</a>
