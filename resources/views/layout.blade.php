@@ -48,17 +48,17 @@
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle {{ Request::is('list-items/*') ? 'active text-primary' : ''}}" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown">Categories</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<a class="dropdown-item" href="/list-items/discounted">Discounted</a>
-										<a class="dropdown-item" href="/list-items/auction">Auction</a>
+										<a class="dropdown-item" href="/list-items/discounted"><i class="fas fa-percent mr-2"></i>Discounted</a>
+										<a class="dropdown-item" href="/list-items/auction"><i class="fas fa-user-tag mr-2"></i>Auction</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="/list-items/clothing">Clothing</a>
-										<a class="dropdown-item" href="/list-items/electronics">Electronics</a>
-										<a class="dropdown-item" href="/list-items/home-garden">Home & Garden</a>
-										<a class="dropdown-item" href="/list-items/pets">Pets</a>
-										<a class="dropdown-item" href="/list-items/sports">Sports</a>
-										<a class="dropdown-item" href="/list-items/health">Health</a>
-										<a class="dropdown-item" href="/list-items/car-accessories">Car accessories</a>
-										<a class="dropdown-item" href="/list-items/tools">Tools</a>
+										<a class="dropdown-item" href="/list-items/clothing"><i class="fas fa-tshirt mr-2"></i>Clothing</a>
+										<a class="dropdown-item" href="/list-items/electronics"><i class="fas fa-microchip mr-2"></i>Electronics</a>
+										<a class="dropdown-item" href="/list-items/home-garden"><i class="fas fa-home mr-2"></i>Home & Garden</a>
+										<a class="dropdown-item" href="/list-items/pets"><i class="fas fa-dog mr-2"></i>Pets</a>
+										<a class="dropdown-item" href="/list-items/sports"><i class="fas fa-basketball-ball mr-2"></i>Sports</a>
+										<a class="dropdown-item" href="/list-items/health"><i class="fas fa-first-aid mr-2"></i>Health</a>
+										<a class="dropdown-item" href="/list-items/car-accessories"><i class="fas fa-car mr-2"></i>Car accessories</a>
+										<a class="dropdown-item" href="/list-items/tools"><i class="fas fa-tools mr-2"></i>Tools</a>
 									</div>
 								</li>
 							</ul>

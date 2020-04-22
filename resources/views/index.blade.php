@@ -25,7 +25,7 @@
 					Opening Sale!
 				</h4>
 				<p>
-					Everything is on sale from now until 03/31! Act quick to get the best deals!
+					Everything is on sale from now until 04/31! Act quick to get the best deals!
 				</p>
 			</div>
 		</div>
