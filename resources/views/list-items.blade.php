@@ -14,8 +14,10 @@
 				@php($date = \Carbon\Carbon::parse($item->endtime))
 				@if($date->isPast())
 					<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }} | <b class="text-danger">Auction ended: {{ $item->endtime }}</b></div></a>
-				@else
+				@elseif($date->isNextWeek())
 					<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }} | <b class="text-warning">Auction will end: {{ $item->endtime }}</b></div></a>
+				@else
+					<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }} | <b class="text-primary">Auction will end: {{ $item->endtime }}</b></div></a>
 				@endif
 			@else
 				<a class="text-decoration-none text-body" href="/item-details/{{ $item->id }}"><div class="card-header">{{ $item->name }}</div></a>
