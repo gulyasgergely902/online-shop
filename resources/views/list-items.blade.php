@@ -37,7 +37,7 @@
 					</div>
 					<div class="item-price text-right">
 						@if($item->sale == 1)
-							<h5 class="text-danger">{{ $item->price }}&nbspFt</h5>
+							<h5 class="text-danger strike">{{ $item->price }}&nbspFt</h5>
 							<h2 class="text-success">{{ $item->sale_price }}&nbspFt</h2>
 						@else
 							<h2>{{ $item->price }}&nbspFt</h2>
